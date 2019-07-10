@@ -1,0 +1,65 @@
+﻿<Page x:Class="MYSHOPMANAGER.VIEWS.ProductsView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MYSHOPMANAGER.VIEWS"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="900" d:DesignWidth="1200"
+      Title="ProductsView">
+    <StackPanel>
+        <TextBlock Text=" NEW STOCK"  Margin="350 35 0 20 "  FontWeight="Bold" Opacity="0.5"  FontSize="26.667"/>
+        <Grid>
+            <TextBlock  FontSize="19.66" HorizontalAlignment="Left" Margin="100,180,0,0"  Text="Amount" VerticalAlignment="Top"/>
+
+            <TextBlock FontSize="19.66" HorizontalAlignment="Left" Margin="690,38,0,0" Text="CHOOSE CATEGORY" VerticalAlignment="Top" RenderTransformOrigin="0.434,1.084"/>
+            <TextBlock FontSize="19.66" HorizontalAlignment="Left"  Margin="98,50,0,0" Text="PRODUCT NAME" VerticalAlignment="Top" RenderTransformOrigin="-0.7,-0.843"/>
+
+            <ComboBox x:Name="combo1" Padding="60 0 0 0" Margin="690,83,0,118" Foreground="White" ItemsSource="{Binding ProductCombo}"  DisplayMemberPath="CategoryName" Background="#FF2196F3" SelectedIndex="0" HorizontalAlignment="Left"   Width="200" SelectionChanged="Combo1_SelectionChanged" Height="25" />
+            <TextBox x:Name="amounttext" Foreground="White" Padding="10 0 0 0" Background="#FF2196F3" HorizontalAlignment="Left" Height="23" Margin="90,214,0,-25"  VerticalAlignment="Top" Width="150"/>
+
+            <TextBox x:Name="productnametext" Foreground="White" Padding="10 0 0 0" Margin="93,88,0,0" Background="#FF2196F3" HorizontalAlignment="Left" Height="23"  VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.428,0.533" />
+            <TextBox x:Name="productidtext" Background="Red" Visibility="Hidden" HorizontalAlignment="Left" Height="23" Margin="0,80,0,0" VerticalAlignment="Top" Width="10"/>
+
+            <TextBlock FontSize="19.66"  HorizontalAlignment="Left" Margin="420,180,0,0" Text="Stock Quantity" VerticalAlignment="Top"/>
+            <TextBox x:Name="stockquantitytext" Padding="10 0 0 0" Foreground="White" Background="#FF2196F3" HorizontalAlignment="Left" Height="23" Margin="410,214,0,-20" VerticalAlignment="Top" Width="150"/>
+            <Button x:Name="savebutton" Content="Save" Style="{StaticResource MaterialDesignRaisedButton}"
+    materialDesign:ButtonProgressAssist.Value="-1"
+    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+    materialDesign:ButtonProgressAssist.IsIndeterminate="True"
+    
+     Background="#FF2196F3" HorizontalAlignment="Left" Margin="710,193,0,-33" Width="148" Click="Savebutton_Click"  />
+            <TextBox x:Name="productcategorytext" Background="Red" HorizontalAlignment="Left" Height="23" Margin="1150,88,0,0" Visibility="Hidden" VerticalAlignment="Top" Width="10" Padding="30 0 0 0" RenderTransformOrigin="0.271,2.333"/>
+            <Button x:Name="Updatebutton" Visibility="Hidden" Content="Update" HorizontalAlignment="Left" Margin="37,288,0,-94" VerticalAlignment="Top" Width="85" Click="Button_Click_2"/>
+        </Grid>
+
+        <TextBlock Text="SHOP PRODUCTS"  Margin="350 80 0 30 " FontWeight="Bold"  Opacity="0.5" Visibility="Visible" FontSize="26.667"/>
+        <DataGrid x:Name="productGrid" Width="780" HorizontalAlignment="Left" CanUserAddRows="False" Margin="120 0 0 0">
+
+            <DataGrid.Columns>
+                <DataGridTemplateColumn Header="Edit">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Edit" Click="Button_Click_1"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn Header="Delete">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Delete" Command="Delete" Click="Button_Click"  />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+            <DataGrid.RowDetailsTemplate>
+                <DataTemplate>
+                    <!--  <TextBlock Text="{Binding Details}" />-->
+
+                </DataTemplate>
+            </DataGrid.RowDetailsTemplate>
+        </DataGrid>
+    </StackPanel>
+</Page>
